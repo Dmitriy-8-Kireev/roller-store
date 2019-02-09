@@ -4,7 +4,7 @@ import "./shopping-cart-table.css";
 const ShoppingCartTable = () => {
   return (
     <div className="shopping-cart-table">
-      <h2>Ваш заказ</h2>
+      <h2 className="cart-table-headline">Ваш заказ</h2>
       <table className="table">
         <thead>
           <tr>

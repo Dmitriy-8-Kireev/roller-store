@@ -18,4 +18,15 @@ const dataLoaded = data => {
   };
 };
 
-export { dataRequested, dataLoaded, dataError };
+const fetchApidata = (dispatch, datastoreService) => () => {
+  dispatch(dataRequested());
+  datastoreService
+    .getData()
+    .then(data => dispatch(dataLoaded(data)))
+    .catch(err => dispatch(dataError(err)));
+};
+//fetchApidata ф-ия, которая возвращает функцию
+//const fetchApidata = (dispatch, datastoreService) =>()
+//внешняя ф-ия для работы в mapDispatchToProps
+// внутр-яя ф-ия для компонента
+export { fetchApidata };

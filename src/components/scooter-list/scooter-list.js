@@ -4,7 +4,7 @@ import Spinner from "../spinner";
 import { connect } from "react-redux";
 
 import { withStoreService } from "../hoc";
-import { dataLoaded, dataRequested, dataError } from "../../actions";
+import { fetchApidata } from "../../actions";
 import { compose } from "../../utils";
 
 import "./scooter-list.css";
@@ -12,17 +12,7 @@ import ErrorIndicator from "../error-indicator";
 
 class ScooterList extends Component {
   componentDidMount() {
-    const {
-      datastoreService,
-      dataLoaded,
-      dataRequested,
-      dataError
-    } = this.props;
-    dataRequested();
-    datastoreService
-      .getData()
-      .then(data => dataLoaded(data))
-      .catch(err => dataError(err));
+    this.props.fetchApidata();
   }
 
   render() {
@@ -52,7 +42,11 @@ const mapStateToProps = ({ scooters, loading, error }) => {
   return { scooters, loading, error };
 };
 
-const mapDispatchToProps = { dataLoaded, dataRequested, dataError };
+const mapDispatchToProps = (dispatch, { datastoreService }) => {
+  return {
+    fetchApidata: fetchApidata(dispatch, datastoreService)
+  };
+};
 
 export default compose(
   withStoreService(),

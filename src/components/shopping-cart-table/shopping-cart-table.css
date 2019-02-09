@@ -12,3 +12,8 @@
   margin-left: 5px;
   margin-top: 5px;
 }
+.cart-table-headline {
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
+}
