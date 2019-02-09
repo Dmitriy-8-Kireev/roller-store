@@ -1,0 +1,31 @@
+.scooter-list-item {
+  display: flex;
+  margin: 15px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.scooter-list-item .scooter-cover {
+  flex-shrink: 0;
+  width: 120px;
+  margin-right: 30px;
+}
+
+.scooter-list-item .scooter-cover img {
+  max-width: 100%;
+}
+
+.scooter-list-item .scooter-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  align-items: flex-start;
+}
+
+.scooter-list-item .scooter-details .scooter-title {
+  font-size: 1.2rem;
+}
+
+.scooter-list-item .scooter-details .scooter-price {
+  font-size: 1.4rem;
+}

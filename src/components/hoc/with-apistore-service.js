@@ -1,5 +1,5 @@
 import React from "react";
-import { DatastoreServiceConsumer } from "../bookstore-service-context";
+import { DatastoreServiceConsumer } from "../apistore-service-context";
 
 const withStoreService = () => Wrapped => {
   return props => {
