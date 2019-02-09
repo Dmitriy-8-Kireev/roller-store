@@ -1,6 +1,6 @@
 import {
   DatastoreServiceProvider,
   DatastoreServiceConsumer
-} from "./bookstore-service-context";
+} from "./apistore-service-context";
 
 export { DatastoreServiceProvider, DatastoreServiceConsumer };
