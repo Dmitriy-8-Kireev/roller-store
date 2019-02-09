@@ -35,10 +35,10 @@ class ScooterList extends Component {
     }
 
     return (
-      <ul className="scooter-list">
+      <ul className="scooter-list row">
         {scooters.map(scooter => {
           return (
-            <li key={scooter.id}>
+            <li key={scooter.id} className="col-xs-6">
               <ScooterListItem scooter={scooter} />
             </li>
           );
