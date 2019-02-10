@@ -29,4 +29,4 @@ const fetchApidata = (dispatch, datastoreService) => () => {
 //const fetchApidata = (dispatch, datastoreService) =>()
 //внешняя ф-ия для работы в mapDispatchToProps
 // внутр-яя ф-ия для компонента
-export { fetchApidata };
+export { fetchApidata, dataRequested, dataError, dataLoaded };
