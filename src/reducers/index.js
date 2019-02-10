@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   scooters: [],
   loading: true,
   error: null
