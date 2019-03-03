@@ -18,7 +18,28 @@ const dataLoaded = data => {
   };
 };
 
-const fetchApidata = (dispatch, datastoreService) => () => {
+export const scooterAddedToCart = scooterId => {
+  return {
+    type: "SCOOTER_ADDED_TO_CART",
+    payload: scooterId
+  };
+};
+
+export const scooterRemovedFromCart = scooterId => {
+  return {
+    type: "SCOOTER_REMOVED_FROM_CART",
+    payload: scooterId
+  };
+};
+
+export const allScootersRemovedFromCart = scooterId => {
+  return {
+    type: "ALL_SCOOTERS_REMOVED_FROM_CART",
+    payload: scooterId
+  };
+};
+
+const fetchApidata = (datastoreService, dispatch) => () => {
   dispatch(dataRequested());
   datastoreService
     .getData()

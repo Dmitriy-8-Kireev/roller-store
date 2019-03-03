@@ -1,7 +1,7 @@
 import React from "react";
 import "./scooters-list-item.css";
 
-const ScooterListItem = ({ scooter }) => {
+const ScooterListItem = ({ scooter, onAddedToCart }) => {
   const {
     title,
     specifications,
@@ -23,7 +23,9 @@ const ScooterListItem = ({ scooter }) => {
         <div className="scooter-author">{wheeldiameter}</div>
         <div className="scooter-author">{weight}</div>
         <div className="scooter-price">{price} руб.</div>
-        <button className="btn btn-info add-to-cart">Добавить в корзину</button>
+        <button onClick={onAddedToCart} className="btn btn-info add-to-cart">
+          Добавить в корзину
+        </button>
       </div>
     </div>
   );

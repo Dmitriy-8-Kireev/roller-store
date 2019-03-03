@@ -1,35 +1,11 @@
-const initialState = {
-  scooters: [],
-  loading: true,
-  error: null
-};
+import updateScooterList from "./scooter-list";
+import updateShoppingCart from "./shopping-cart";
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "FETCH_DATA_REQUESTED":
-      return {
-        scooters: [],
-        loading: true,
-        error: null
-      };
-
-    case "FETCH_DATA_ERROR":
-      return {
-        scooters: [],
-        loading: true,
-        error: action.payload
-      };
-
-    case "FETCH_DATA_LOADED":
-      return {
-        scooters: action.payload,
-        loading: false,
-        error: null
-      };
-
-    default:
-      return state;
-  }
+const reducer = (state, action) => {
+  return {
+    scooterList: updateScooterList(state, action),
+    shoppingCart: updateShoppingCart(state, action)
+  };
 };
 
 export default reducer;

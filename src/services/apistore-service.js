@@ -43,13 +43,9 @@ export default class ApistoreService {
   ];
 
   getData() {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       setTimeout(() => {
-        if (Math.random() > 0.75) {
-          reject(new Error("O nooooOOO!!!:))))))"));
-        } else {
-          resolve(this.data);
-        }
+        resolve(this.data);
       }, 700);
     });
   }

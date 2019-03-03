@@ -4,47 +4,53 @@ import Spinner from "../spinner";
 import { connect } from "react-redux";
 
 import { withStoreService } from "../hoc";
-import { fetchApidata } from "../../actions";
+import { fetchApidata, scooterAddedToCart } from "../../actions";
 import { compose } from "../../utils";
 
 import "./scooter-list.css";
 import ErrorIndicator from "../error-indicator";
 
-class ScooterList extends Component {
+const ScooterList = ({ scooters, onAddedToCart }) => {
+  return (
+    <ul className="scooter-list row">
+      {scooters.map(scooter => {
+        return (
+          <li key={scooter.id} className="col-sm-12 col-md-6 col-lg-6">
+            <ScooterListItem
+              scooter={scooter}
+              onAddedToCart={() => onAddedToCart(scooter.id)}
+            />
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+class ScooterListContainer extends Component {
   componentDidMount() {
     this.props.fetchApidata();
   }
 
   render() {
-    const { scooters, loading, error } = this.props;
+    const { scooters, loading, error, onAddedToCart } = this.props;
     if (error) {
       return <ErrorIndicator />;
     }
     if (loading) {
       return <Spinner />;
     }
-
-    return (
-      <ul className="scooter-list row">
-        {scooters.map(scooter => {
-          return (
-            <li key={scooter.id} className="col-sm-12 col-md-6 col-lg-6">
-              <ScooterListItem scooter={scooter} />
-            </li>
-          );
-        })}
-      </ul>
-    );
+    return <ScooterList scooters={scooters} onAddedToCart={onAddedToCart} />;
   }
 }
 
-const mapStateToProps = ({ scooters, loading, error }) => {
+const mapStateToProps = ({ scooterList: { scooters, loading, error } }) => {
   return { scooters, loading, error };
 };
 
 const mapDispatchToProps = (dispatch, { datastoreService }) => {
   return {
-    fetchApidata: fetchApidata(dispatch, datastoreService)
+    fetchApidata: fetchApidata(datastoreService, dispatch),
+    onAddedToCart: id => dispatch(scooterAddedToCart(id))
   };
 };
 
@@ -54,4 +60,4 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   )
-)(ScooterList);
+)(ScooterListContainer);
