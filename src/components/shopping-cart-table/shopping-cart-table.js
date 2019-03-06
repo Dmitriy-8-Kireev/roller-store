@@ -14,6 +14,9 @@ const ShoppingCartTable = ({
   onDecrease,
   onDelete
 }) => {
+  const newTotal = items.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue.total;
+  }, 0);
   const renderRow = (item, idx) => {
     const { id, title, count, total } = item;
     return (
@@ -63,7 +66,7 @@ const ShoppingCartTable = ({
         <tbody>{items.map(renderRow)}</tbody>
       </table>
 
-      <div className="total">Всего: {total} ₽</div>
+      <div className="total">Всего: {newTotal} ₽</div>
     </div>
   );
 };

@@ -32,17 +32,14 @@ const updateOrder = (state, scooterId, quantity) => {
   const item = cartItems[itemIndex];
 
   const newItem = updateCartItem(scooter, item, quantity);
-  return {
-    orderTotal: 0,
-    cartItems: updateCartItems(cartItems, newItem, itemIndex)
-  };
+
+  return { cartItems: updateCartItems(cartItems, newItem, itemIndex) };
 };
 
 const updateShoppingCart = (state, action) => {
   if (state === undefined) {
     return {
-      cartItems: [],
-      orderTotal: 0
+      cartItems: []
     };
   }
 
