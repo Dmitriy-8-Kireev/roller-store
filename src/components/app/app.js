@@ -11,8 +11,8 @@ const App = () => {
       <ShopHeader numItems={1} total={10000} />
       <Switch>
         <Route path="/" component={HomePage} exact />
-
         <Route path="/cart" component={CartPage} />
+        <Route path="/roller-store/" component={HomePage} />
       </Switch>
     </main>
   );
